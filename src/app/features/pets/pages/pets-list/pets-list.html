@@ -1,1 +1,7 @@
-<p>pets-list works!</p>
+<div class="pets-container">
+
+  @for (pet of pets; track pet.id) {
+    <app-pet-card [pet]="pet"></app-pet-card>
+  }
+
+</div>

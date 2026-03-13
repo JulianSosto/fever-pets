@@ -1,12 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PetsService } from '../../../../core/services/pets.service';
+import { Pet } from '../../../../core/models/pet.model';
+import { CommonModule } from '@angular/common';
+import { PetCard } from '../../components/pet-card/pet-card';
 
 @Component({
   selector: 'app-pets-list',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, PetCard],
   templateUrl: './pets-list.html',
-  styleUrl: './pets-list.scss',
-  standalone: true
+  styleUrls: ['./pets-list.scss']
 })
-export class PetsList {
+export class PetsList implements OnInit {
+
+  pets: Pet[] = [];
+
+  constructor(private petsService: PetsService) {}
+
+  ngOnInit(): void {
+    this.petsService.getPets().subscribe(data => {
+      this.pets = data;
+    });
+  }
 
 }
