@@ -1,12 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Pet } from '../../../../core/models/pet.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-pet-card',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './pet-card.html',
-  styleUrl: './pet-card.scss',
-  standalone: true
+  styleUrls: ['./pet-card.scss']
 })
 export class PetCard {
+
+  @Input() pet!: Pet;
 
 }
